@@ -1,0 +1,68 @@
+<ion-header>
+  	<ion-navbar color="primary">
+    	<ion-toolbar>
+      		<ion-buttons left>
+        		<button ion-button (click)="fechar()">
+          			<ion-icon name="md-arrow-round-back"></ion-icon>
+        		</button>
+      		</ion-buttons>
+      		<ion-title>Grupo</ion-title>
+    	</ion-toolbar>
+  	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>	
+	<ion-list>
+    	<form [formGroup]="grupo" (ngSubmit)="save()">
+
+	      	<ion-item>
+		        <ion-label floating>Nome *</ion-label>
+		        <ion-input type="text" formControlName="nome"></ion-input>
+		    </ion-item>
+
+      		<p padding-top>Permissões</p>
+
+	      	<ion-item>
+	          	<ion-label>Consumo</ion-label>
+	          	<ion-toggle checked="false" formControlName="consumo"></ion-toggle>
+	      	</ion-item>
+
+	      	<ion-item>
+	          	<ion-label floating>Dispositivos</ion-label>
+	          	<ion-select formControlName="dispositivo" multiple>
+	            	<ion-option *ngFor="let opcao of opcoes" value="{{opcao.value}}">{{opcao.nome}}</ion-option>
+	            	<ion-option value="12">Permissões</ion-option>
+	          	</ion-select>
+	          	<ion-toggle checked="false" formControlName="check_dispositivo" (ionChange)="habilitar($event,'dispositivo')"></ion-toggle>
+	      	</ion-item>
+
+	      	<ion-item>
+	          	<ion-label floating>Grupos</ion-label>
+	          	<ion-select formControlName="grupo" multiple>
+	            	<ion-option *ngFor="let opcao of opcoes" value="{{opcao.value}}">{{opcao.nome}}</ion-option>
+	          	</ion-select>
+	          	<ion-toggle checked="false" formControlName="check_grupo" (ionChange)="habilitar($event,'grupo')"></ion-toggle>
+	      	</ion-item>
+
+	      	<ion-item>
+	         	<ion-label floating>Pessoas</ion-label>
+	          	<ion-select formControlName="pessoa" multiple>
+	            	<ion-option *ngFor="let opcao of opcoes" value="{{opcao.value}}">{{opcao.nome}}</ion-option>
+	          	</ion-select>
+	          	<ion-toggle checked="false" formControlName="check_pessoa" (ionChange)="habilitar($event,'pessoa')"></ion-toggle>
+	      	</ion-item>
+
+	      	<ion-item>
+	          	<ion-label floating>Espaços</ion-label>
+	          	<ion-select formControlName="espaco" multiple>
+	            	<ion-option *ngFor="let opcao of opcoes" value="{{opcao.value}}">{{opcao.nome}}</ion-option>
+	          	</ion-select>
+	          	<ion-toggle checked="false" formControlName="check_espaco" (ionChange)="habilitar($event,'espaco')"></ion-toggle>
+	      	</ion-item>
+
+	  	  	<button margin-top ion-button full round color="primary" [disabled]="grupo.invalid" type="submit" >Salvar</button>
+	    </form>
+  	</ion-list>
+
+</ion-content>

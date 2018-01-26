@@ -1,0 +1,35 @@
+<ion-header>
+  	<ion-navbar color="primary">
+    	<ion-toolbar>
+      		<ion-buttons left>
+        		<button ion-button (click)="fechar()">
+          			<ion-icon name="md-arrow-round-back"></ion-icon>
+        		</button>
+      		</ion-buttons>
+      		<ion-title>Permissões</ion-title>
+    	</ion-toolbar>
+  	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-list>
+		<form [formGroup]="permissao" (ngSubmit)="deletePermissoes()">
+		    <ion-item no-padding>
+		        <ion-label floating>Grupos</ion-label>
+		        <ion-select formControlName="grupos"  multiple>
+		            <ion-option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.nome}}</ion-option>
+		        </ion-select>
+		    </ion-item>
+        <!--< ion-item no-padding>
+            <ion-label floating>Pessoas</ion-label>
+            <ion-select formControlName="grupos"  multiple>
+                <ion-option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.nome}}</ion-option>
+            </ion-select>
+        </ion-item> -->
+  			<button margin-top ion-button block round color="primary" type="submit">Salvar</button>
+		</form>
+  	</ion-list>
+
+</ion-content>

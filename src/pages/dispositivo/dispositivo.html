@@ -1,0 +1,43 @@
+<ion-header>
+  	<ion-navbar color="primary">
+    	<ion-toolbar>
+      		<ion-buttons left>
+        		<button ion-button (click)="fechar()">
+          			<ion-icon name="md-arrow-round-back"></ion-icon>
+        		</button>
+      		</ion-buttons>
+      		<ion-title>Dispositivo</ion-title>
+    	</ion-toolbar>
+  	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-list>
+	    <form [formGroup]="dispositivo" (ngSubmit)="save()">
+
+	      	<ion-item>
+		        <ion-label floating>Nome *</ion-label>
+		        <ion-input type="text" formControlName="nome"></ion-input>
+		    </ion-item>
+
+		    <ion-item>
+		        <ion-label floating>Tipo *</ion-label>
+		        <ion-select formControlName="id_tipo">
+	      			<ion-option *ngFor="let tipo of tipos" value="{{tipo.id}}">{{tipo.nome}}</ion-option>
+		    	</ion-select>
+		    </ion-item>
+
+	  		<ion-item>
+		        <ion-label floating>Espaço *</ion-label>
+		        <ion-select formControlName="id_espaco">
+	      			<ion-option *ngFor="let espaco of espacos" value="{{espaco.id}}">{{espaco.nome}}</ion-option>
+		    	</ion-select>
+		    </ion-item>
+
+	  	  	<button margin-top ion-button full color="primary" [disabled]="dispositivo.invalid" type="submit" >Salvar</button>
+	    </form>
+    </ion-list>
+
+</ion-content>

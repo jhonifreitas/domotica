@@ -1,0 +1,27 @@
+<ion-header>
+  	<ion-navbar color="primary">
+    	<ion-toolbar>
+      		<ion-buttons left>
+        		<button ion-button (click)="fechar()">
+          			<ion-icon name="md-arrow-round-back"></ion-icon>
+        		</button>
+      		</ion-buttons>
+      		<ion-title>Espaço</ion-title>
+    	</ion-toolbar>
+  	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  	<ion-list>
+    	<form [formGroup]="espaco" (ngSubmit)="save()">
+	      	<ion-item>
+	          	<ion-label floating>Nome *</ion-label>
+	          	<ion-input type="text" formControlName="nome" ></ion-input>
+	      	</ion-item>
+
+	      	<button margin-top ion-button full color="primary" type="submit" >Salvar</button>
+    	</form>
+  	</ion-list>
+
+</ion-content>

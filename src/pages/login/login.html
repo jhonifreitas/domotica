@@ -1,0 +1,20 @@
+<ion-content padding>
+    <div style="margin: 15% auto;width: 60%;">
+        <img src="assets/imgs/capa.png" alt="Capa">
+    </div>
+    <form [formGroup]="group" (ngSubmit)="login()">
+   
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+        </ion-list>
+        
+        <button ion-button round full type="submit" [disabled]="group.invalid">Login</button>
+    </form>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  	<ion-navbar color="primary">
+	    <ion-toolbar>
+	      	<ion-buttons left>
+		        <button ion-button (click)="fechar()">
+		          	<ion-icon name="md-arrow-round-back"></ion-icon>
+		        </button>
+	      	</ion-buttons>
+	      	<ion-title>Pessoa</ion-title>
+	    </ion-toolbar>
+  	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-list>
+		<form [formGroup]="pessoa" (ngSubmit)="save()">
+		    <ion-item no-padding *ngIf="hidden">
+		        <ion-label floating>Nome *</ion-label>
+		        <ion-input type="text" formControlName="nome"></ion-input>
+		    </ion-item>
+
+            <ion-item no-padding *ngIf="hidden">
+                <ion-label floating>Usuário *</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+
+            <ion-item no-padding *ngIf="hidden_pass">
+                <ion-label floating>Senha *</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+
+            <ion-item no-padding *ngIf="hidden_pass">
+                <ion-label floating>Confirmar Senha *</ion-label>
+                <ion-input type="password" formControlName="conf_pass"></ion-input>
+            </ion-item>
+
+            <div *ngIf="hidden_pass">
+              <ion-item no-padding class="error" *ngIf="pessoa.controls.conf_pass.touched && pessoa.hasError('validaSenha') && pessoa.controls.password.valid">
+                  <ion-label>Senhas não coincidem!</ion-label>
+              </ion-item>
+            </div>
+
+    		<ion-item no-padding *ngIf="hidden">
+		        <ion-label floating>Grupo *</ion-label>
+		        <ion-select formControlName="grupos" multiple>
+		            <ion-option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.nome}}</ion-option>
+		        </ion-select>
+		    </ion-item>
+  			<button margin-top ion-button block round color="primary" [disabled]="pessoa.invalid" type="submit">Salvar</button>
+		</form>
+  </ion-list>
+
+</ion-content>

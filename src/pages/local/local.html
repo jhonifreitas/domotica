@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-navbar color="primary">
+	  	<button ion-button menuToggle>
+	    	<ion-icon name="menu"></ion-icon>
+	  	</button>
+	  	<ion-title>Local</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<form [formGroup]="local" (ngSubmit)="save()">
+		<ion-list>
+			
+		    <ion-item>
+			    <ion-label floating>Rua*</ion-label>
+			    <ion-input type="text" formControlName="rua"></ion-input>
+		    </ion-item>
+		    
+		    <ion-item>
+			    <ion-label floating>Número*</ion-label>
+			    <ion-input type="number" formControlName="numero"></ion-input>
+		    </ion-item>
+		    
+		    <ion-item>
+			    <ion-label floating>Complemento</ion-label>
+			    <ion-input type="text" formControlName="complemento"></ion-input>
+		    </ion-item>
+		    
+		    <ion-item>
+			    <ion-label floating>UF*</ion-label>
+			    <ion-select formControlName="id_uf" (ngModelChange)="findCidade(id_uf)">
+	      			<ion-option *ngFor="let uf of ufs" value="{{uf.id}}">{{uf.nome}}</ion-option>
+		    	</ion-select>
+		    </ion-item>
+		    
+		    <ion-item>
+			    <ion-label floating>Cidade*</ion-label>
+			    <ion-select formControlName="id_cidade">
+	      			<ion-option *ngFor="let cidade of cidades" value="{{cidade.id}}">{{cidade.nome}}</ion-option>
+		    	</ion-select>
+		    </ion-item>
+		    
+		    <ion-item>
+		      	<ion-label floating>Bairro*</ion-label>
+		      	<ion-input type="text" formControlName="bairro" ></ion-input>
+		    </ion-item> 
+		    
+		</ion-list>
+		
+	    <button ion-button full color="primary" type="submit" [disabled]="local.invalid">Salvar</button>
+	</form>
+	
+</ion-content>
